@@ -1,0 +1,46 @@
+<!---Badge.stories.mdx --->
+
+import { Meta, Story, Preview, ArgsTable, Source } from '@storybook/addon-docs';
+
+import Button from '../../../../src/elements/Button';
+
+<Meta title="Components/Elements/Button" component={Button} />
+
+export const Template = (args) => <Button {...args} />;
+
+# Button
+
+<Source language="jsx" code="import { Button } from 'bycoders-ui-react'" />
+
+The `Button` component is a wrapper for a `<button />` with a fancy style.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Button} />
+
+## Shorthand
+
+In most of times we should use this `Shorthand`:
+
+<Preview>
+  <Story
+    name="Shorthand"
+    args={{
+      size: 'medium',
+      variant: 'primary',
+      mode: 'default',
+      iconPosition: 'left',
+      loading: false,
+      onClick: () => alert('callback'),
+      icon: 'calendar',
+      children: 'Click-Me',
+      disabled: false
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Shorthand" />

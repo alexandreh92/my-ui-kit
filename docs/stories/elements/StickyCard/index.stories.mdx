@@ -1,0 +1,93 @@
+<!---Badge.stories.mdx --->
+
+import { Meta, Story, Preview, ArgsTable, Source } from '@storybook/addon-docs';
+
+import StickyCard from '../../../../src/elements/StickyCard';
+
+<Meta
+  title="Components/Elements/StickyCard"
+  component={StickyCard}
+  subcomponents={{
+    'StickyCard.Header': StickyCard.Header,
+    'StickyCard.Content': StickyCard.Content,
+    'StickyCard.Action': StickyCard.Action,
+  }}
+/>
+
+export const Template = (args) => <StickyCard {...args} />;
+
+# Sticky Card
+
+<Source language="jsx" code="import { StickyCard } from 'bycoders-ui-react'" />
+
+The `Sticky Card` is a simple card that renders a icon, title, description and a button
+which does some action.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={StickyCard} />
+
+## Shorthand
+
+In most of times we should use this `Shorthand`:
+
+<Preview>
+  <Story
+    name="Shorthand"
+    args={{
+      icon: 'calendar',
+      title: 'Title',
+      content: 'Some description for component',
+      actionText: 'Some Action >',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Shorthand" />
+
+## Children Override
+
+We can override what `Sticky Card` renders passing a `children` to it:
+
+<Preview>
+  <Story name="Override" args={{ children: <div>Hello there</div> }}>
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+## Default Children Render
+
+We can pass `children` to it and build same as `Shorthand` like:
+
+<Preview
+  mdxSource={`
+<StickyCard>
+  <StickyCard.Header title="Title" icon={<CalendarToday />} />
+  <StickyCard.Content>
+    Some description for component
+  </StickyCard.Content>
+  <StickyCard.Action actionText="Some Action >" />
+</StickyCard>
+  `}
+>
+  <Story
+    name="Default Children"
+    args={{
+      children: (
+        <>
+          <StickyCard.Header title="Title" icon={<CalendarToday />} />
+          <StickyCard.Content>
+            Some description for component
+          </StickyCard.Content>
+          <StickyCard.Action actionText="Some Action >" />
+        </>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>

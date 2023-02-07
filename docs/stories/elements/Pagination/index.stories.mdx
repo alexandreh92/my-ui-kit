@@ -1,0 +1,55 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import Pagination from '../../../../src/elements/Pagination';
+
+<Meta title="Components/Elements/Pagination" component={Pagination} />
+
+export const Template = (args) => <Pagination {...args} />;
+
+# Pagination
+
+<Source language="jsx" code="import { Pagination } from 'bycoders-ui-react'" />
+
+The `Pagination` component is used to show pages of data.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Pagination} />
+
+## Default
+
+You should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      totalPages: 10,
+      boundaryRange: 1,
+      activePage: 5,
+      siblingRange: 1,
+      showEllipsis: true,
+      ellipsize: true,
+      backButtonLabel: 'Back',
+      nextButtonLabel: 'Next',
+      onPageClick: (page) => alert(`you've clicked on page ${page}`),
+      onNextPageClick: (page) => alert(`the next page is ${page}`),
+      onPrevPageClick: (page) => alert(`the prev page is ${page}`)
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />

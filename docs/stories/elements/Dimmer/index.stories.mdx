@@ -1,0 +1,52 @@
+<!---Badge.stories.mdx --->
+
+import { Meta, Story, Preview, Source, ArgsTable } from '@storybook/addon-docs';
+
+import Spinner from '../../../../src/elements/Spinner';
+import Dimmer from '../../../../src/elements/Dimmer';
+import Heading from '../../../../src/elements/Heading';
+
+<Meta
+  title="Components/Elements/Dimmer"
+  component={Dimmer}
+  decorators={[
+    (Story) => (
+      <div style={{ width: '100%', height: '120px', position: 'relative' }}>
+        <Heading>Some Content</Heading>
+        <Story />
+      </div>
+    ),
+  ]}
+/>
+
+export const Template = (args) => <Dimmer {...args} />;
+
+# Dimmer
+
+<Source language="jsx" code="import { Dimmer } from 'bycoders-ui-react'" />
+
+Just a `Dimmer`.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Dimmer} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      page: false,
+      inverted: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />

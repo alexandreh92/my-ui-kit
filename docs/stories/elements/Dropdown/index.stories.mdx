@@ -1,0 +1,45 @@
+<!--- Dropdown.stories.mdx --->
+
+import { Meta, Story, Preview, ArgsTable, Source } from '@storybook/addon-docs';
+
+import { useEffect, useState, createRef, useRef } from 'react';
+
+import Dropdown from '../../../../src/elements/Dropdown';
+import Menu from '../../../../src/elements/Menu';
+import Button from '../../../../src/elements/Button';
+
+<Meta
+  title="Components/Elements/Dropdown"
+  component={Dropdown}
+/>
+
+export const Template = (args) => <Dropdown {...args} />;
+
+# Dropdown
+
+<Source language="jsx" code="import { Dropdown } from 'bycoders-ui-react'" />
+
+The `Dropdown` component is a wrapper to popover something off from screen.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Dropdown} />
+
+## Default
+
+You can use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      trigger: <Button>Show</Button>,
+      mode: 'bottom-left',
+      children: <Menu items={[{ value: 'option 1', name: 'option-1' }]} />,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>

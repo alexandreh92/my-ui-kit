@@ -1,0 +1,229 @@
+<!---Toaster.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import ToastProvider from '../../../../src/contexts/ToastContext';
+import useToaster from '../../../../src/hooks/useToaster';
+import Button from '../../../../src/elements/Button';
+import Toast, { ToastProps } from '../../../../src/addons/Toast';
+import Toastr from '../../../../src/helpers/Toastr';
+
+import Toaster from '../../../components/Toaster';
+
+<Meta title="Components/Elements/Toaster" component={ToastProvider} />
+
+export const Template = (args) => <ToastProvider {...args} />;
+
+export const ToastTemplate = (args) => <Toast {...args} />;
+
+# Toaster (Toast Notifications)
+
+To use Toast notifications with this library you'll need to wrap your application
+with the `ToastProvider` component.
+
+<Source
+  language="jsx"
+  code="import { ToastProvider } from 'bycoders-ui-react'"
+/>
+
+The `ToasterProvider` is a provider which renders a `React Portal` inside of it and
+manages toasts inside of it.
+
+<br></br>
+<br></br>
+
+<Story name="Usage">
+  <></>
+</Story>
+
+## Usage
+
+<br></br>
+<br></br>
+
+### React.js
+
+```jsx
+// src/index.js
+
+import {
+  ThemeProvider,
+  ToastProvider,
+  defaultTheme,
+  ResetCSS,
+} from 'bycoders-ui-react';
+
+function MyApp() {
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <ToastProvider defaultDuration={1000} position="top-right">
+        <ResetCSS />
+        <Router />
+        <OtherComponents />
+      </ToastProvider>
+    </ThemeProvider>
+  );
+}
+
+export default MyApp;
+```
+
+### NextJS
+
+```jsx
+// src/pages/_app.js
+
+import { ThemeProvider, ToastProvider, defaultTheme } from 'bycoders-ui-react';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <ToastProvider defaultDuration={1000} position="top-right">
+        <ResetCSS />
+        <Component {...pageProps} />
+      </ToastProvider>
+    </ThemeProvider>
+  );
+}
+
+export default MyApp;
+```
+
+<br></br>
+
+<Story name="Properties">
+  <></>
+</Story>
+
+## Properties
+
+<ArgsTable of={ToastProvider} />
+
+<br></br>
+
+## Triggering Toasts
+
+```jsx
+import { useToaster } from 'bycoders-ui-react';
+```
+
+To trigger toasts you'll need to use a hook named `useToaster`. It's usage is pretty
+simple:
+
+<Preview
+  mdxSource={`
+import useToaster from '../../../src/hooks/useToaster';
+import Button from '../../../src/elements/Button';
+const Toaster = () => {
+  const { notify } = useToaster();
+  return (
+    <Button
+      onClick={() => notify({ message: 'Some Message', title: 'Some Title', persistent: false })}
+    >
+      Show Notification
+    </Button>
+  );
+};
+export default Toaster;
+`}
+>
+  <Story
+    name="Triggering Toasts"
+    args={{
+      defaultDuration: 5000,
+      position: 'top-right',
+      children: <Toaster />,
+    }}
+    argTypes={{
+      children: {
+        table: {
+          type: { summary: 'React.ReactNode' },
+        },
+        control: {
+          type: 'null',
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Triggering Toasts" />
+
+## Triggering Without React Hooks
+
+Sometimes you'll need to trigger a Toast from outside a React Component.
+To do so, we've created a module that handle it for you:
+
+<Preview
+  mdxSource={`
+import { Toastr } from 'bycoders-ui-react'
+const MyComponent = () => {
+    return(
+      <Button onClick={() => Toastr.notify({ title: 'foo', message: 'hey' })}>
+        Without React Hooks
+      </Button>
+    )
+}
+`}
+>
+  <Story name="Triggering Without Hooks">
+    <Button
+      onClick={() =>
+        Toastr.notify({
+          title: 'I am Notification',
+          message: 'I was triggered without React Hooks',
+        })
+      }
+    >
+      Without React Hooks
+    </Button>
+  </Story>
+</Preview>
+
+<!-- ## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      label: 'Some Label',
+      name: 'input-name',
+      caption: 'Some Caption',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />
+
+The `TextArea` component also supports a built-in save button with a handler.
+
+<Preview>
+  <Story
+    name="Save Button"
+    args={{
+      label: 'Some Label',
+      name: 'input-name',
+      caption: 'Some Caption',
+      enableButton: true,
+      labelButton: 'Save',
+      onSave: () => alert('button triggered'),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Save Button" /> -->

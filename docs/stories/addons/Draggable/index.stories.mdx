@@ -1,0 +1,67 @@
+<!---Draggable.stories.mdx --->
+
+import { Meta, Story, Preview, Source, ArgsTable } from '@storybook/addon-docs';
+
+import Draggable from '../../../../src/addons/Draggable';
+import DraggableContainer from '../../../components/DraggableContainer';
+
+<Meta title="Components/Addons/Draggable" component={Draggable} />
+
+export const Template = (args) => <Draggable {...args} />;
+
+# Draggable
+
+<Source language="jsx" code="import { Draggable } from 'bycoders-ui-react'" />
+
+The `Draggable` component is a wrapper for `dragging/dropping` things. It should be used
+always wrapped by `React-DnD` wrapper to work as expected.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Draggable} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview
+  mdxSource={`
+const DraggableContainer = () => {
+  const items = [
+    { id: 1, type: 'card', content: 'foo', position: 1 },
+    { id: 2, type: 'card', content: 'baz', position: 2 },
+  ];
+  const [stateItems, setStateItems] = useState(items);
+  const handleOnMove = (position: OnMoveType) => {
+    console.log(position)
+  };
+  return (
+    <DndProvider backend={HTML5Backend}>
+      {stateItems.map((item, idx) => (
+        <Draggable
+          key={item.id}
+          position={idx}
+          type={item.type}
+          onMove={handleOnMove}
+        >
+          <div>
+            {item.content}
+          </div>
+        </Draggable>
+      ))}
+    </DndProvider>
+  );
+};
+export default DraggableContainer;
+`}
+>
+  <Story name="Default">
+    {() => (
+      <div>
+        <DraggableContainer />
+      </div>
+    )}
+  </Story>
+</Preview>

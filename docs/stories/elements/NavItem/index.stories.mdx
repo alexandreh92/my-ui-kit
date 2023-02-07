@@ -1,0 +1,48 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import NavItem from '../../../../src/elements/NavItem';
+
+<Meta title="Components/Elements/NavItem" component={NavItem} />
+
+export const Template = (args) => <NavItem {...args} />;
+
+# NavItem
+
+<Source language="jsx" code="import { NavItem } from 'bycoders-ui-react'" />
+
+The `NavItem` component usually is used to build sidebars. It renders an `icon` and
+some text.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={NavItem} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      icon: 'wifi',
+      text: 'Some Text',
+      active: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />

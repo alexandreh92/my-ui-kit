@@ -1,0 +1,16 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+FILE=src/config/icons/selection.json
+
+# Check if Icon Configuration Changed
+CHANGED=$(git diff -q $FILE)
+
+if [ -n "$CHANGED" ]
+then
+  echo "Changes in Icon Config detected. Generating new files..."
+  npx node scripts/type-icons.js
+  echo "Continuing with commit..."
+else
+  echo "No changes in Icon Config. Continuing with commit..."
+fi

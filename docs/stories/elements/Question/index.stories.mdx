@@ -1,0 +1,56 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import Question from '../../../../src/elements/Question';
+
+import { repliesMock } from './repliesMock'
+
+<Meta title="Components/Elements/Question" component={Question} />
+
+export const Template = (args) => <Question {...args} />;
+
+# Question
+
+<Source language="jsx" code="import { Question } from 'bycoders-ui-react'" />
+
+The `Question` is a composite component which is used to render questions and it's answers.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Question} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      questionId: 1,
+      owner: "Marcos Lima",
+      ownerMeta: "A.I Soluções",
+      date: "Há 3 dias.",
+      title: "Organização dos funcionários.",
+      body: "Estou com uma dúvida sobre como conseguirei organizar todos os meus funcionários para que possamos concluir a tividade passada, uma vez que ainda não temos a maturidade necessária.",
+      userImage: 'https://m.media-amazon.com/images/I/51TIz7MsZIL._AC_SL1300_.jpg',
+      ownerImage: 'https://imagez.tmz.com/image/c9/4by3/2017/07/28/c95fef52c65d52c7b265c162b9671229_xl.jpg',
+      replies: repliesMock,
+      onSend: (value) => alert(`do something with this value: ${JSON.stringify(value)}`)
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />

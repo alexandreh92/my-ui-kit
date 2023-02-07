@@ -1,0 +1,51 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import Icon from '../../../../src/addons/Icon';
+import IconContainer from '../../../components/IconContainer';
+
+<Meta title="Components/Addons/Icon" component={Icon} />
+
+export const Template = (args) => <Icon {...args} />;
+
+# Icon
+
+<Source language="jsx" code="import { Icon } from 'bycoders-ui-react'" />
+
+The `Icon` component renders a built-in icon as svg.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Icon} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      icon: 'wifi',
+      color: 'red',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />
+
+<div>
+  <IconContainer />
+</div>

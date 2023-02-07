@@ -1,0 +1,81 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import Table from '../../../../src/elements/Table';
+
+<Meta title="Components/Elements/Table" component={Table} />
+
+export const Template = (args) => <Table {...args} />;
+
+# Table
+
+<Source language="jsx" code="import { Table } from 'bycoders-ui-react'" />
+
+The `Table` component is a table which you pass `columns` and `data` props.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Table} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      sortable: true,
+      hooverable: true,
+      data: [
+        { id: 1, name: 'John Doe', color: 'Black', car: 'Ferrari' },
+        { id: 2, name: 'Jane Doe', color: 'Blue', car: 'BMW' },
+      ],
+      columns: [
+        {
+          name: 'id',
+          title: 'ID',
+          DataCell: ({ dataRow }) => <>{dataRow.id}</>,
+          HeaderCell: ({ title }) => <>{title}</>,
+        },
+        {
+          name: 'name',
+          title: 'Nome',
+          DataCell: ({ dataRow }) => <>{dataRow.name}</>,
+          HeaderCell: ({ title }) => <>{title}</>,
+          onCellClick: ({ name }) => alert(`you clicked in ${name} cell`),
+        },
+        {
+          name: 'color',
+          title: 'Cor Preferida',
+          DataCell: ({ dataRow }) => <>{dataRow.color}</>,
+          HeaderCell: ({ title }) => <>{title}</>,
+          onSort: ({ name, direction }) =>
+            alert(`sorted by ${name} in ${direction} direction`),
+        },
+        {
+          name: 'car',
+          title: 'Carro',
+          DataCell: ({ dataRow }) => <>{dataRow.car}</>,
+          HeaderCell: ({ title }) => <>{title}</>,
+          onSort: ({ name, direction }) =>
+            alert(`sorted by ${name} in ${direction} direction`),
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />

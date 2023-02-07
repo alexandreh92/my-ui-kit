@@ -1,0 +1,48 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import Checkbox from '../../../../src/elements/Checkbox';
+
+<Meta title="Components/Elements/Checkbox" component={Checkbox} />
+
+export const Template = (args) => <Checkbox {...args} />;
+
+# Checkbox
+
+<Source language="jsx" code="import { Checkbox } from 'bycoders-ui-react'" />
+
+A `Checkbox` is a checkbox input type and could be used in a Form or outside it. It extends
+any default `HTMLInput` props.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Checkbox} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      label: 'Some Label',
+      name: 'checkbox-name',
+      caption: 'Some Caption',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />

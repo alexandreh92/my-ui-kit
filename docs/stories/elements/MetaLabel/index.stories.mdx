@@ -1,0 +1,48 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import MetaLabel from '../../../../src/elements/MetaLabel';
+
+<Meta title="Components/Elements/MetaLabel" component={MetaLabel} />
+
+export const Template = (args) => <MetaLabel {...args} />;
+
+# Meta Label
+
+<Source language="jsx" code="import { MetaLabel } from 'bycoders-ui-react'" />
+
+The `MetaLabel` component is a simple component which renders a `icon` and a `text`.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={MetaLabel} />
+
+## Default
+
+You should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      icon: 'wifi',
+      label: 'Some Label',
+      bottomLabel: 'Some Other Info',
+      title: 'Some Title',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />

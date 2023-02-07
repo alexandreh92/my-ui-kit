@@ -1,0 +1,47 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+import { useState } from 'react';
+
+import Board from '../../../../src/collections/Board';
+import { boardData } from './mocks';
+
+<Meta
+  title="Components/Elements/Board"
+  component={Board}
+  decorators={[(Story) => <div style={{ height: '100vh' }}>{Story()}</div>]}
+/>
+
+export const Template = (args) => <Board {...args} />;
+
+# Board
+
+<Source language="jsx" code="import { Board } from 'bycoders-ui-react'" />
+
+The `Board` component is a wrapper to an element which renders a Board when the trigger
+element is pressed.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Board} />
+
+<Preview>
+  <Story
+    height="290px"
+    name="Default"
+    args={{
+      data: boardData,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>

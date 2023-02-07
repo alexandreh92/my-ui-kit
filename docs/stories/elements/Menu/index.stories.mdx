@@ -1,0 +1,46 @@
+<!---Menu.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import { itemMock } from "./itemMock"
+import Menu from '../../../../src/elements/Menu';
+
+<Meta title="Components/Elements/Menu" component={Menu} />
+
+export const Template = (args) => <Menu {...args} />;
+
+# Menu
+
+<Source language="jsx" code="import { Menu } from 'bycoders-ui-react'" />
+
+A `Menu`.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Menu} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      items: itemMock
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />

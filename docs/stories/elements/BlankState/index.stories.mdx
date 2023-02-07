@@ -1,0 +1,100 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import BlankState from '../../../../src/elements/BlankState';
+
+<Meta
+  title="Components/Elements/BlankState"
+  component={BlankState}
+  subcomponents={{
+    'BlankState.Title': BlankState.Title,
+    'BlankState.Description': BlankState.Description,
+    'BlankState.Action': BlankState.Action,
+  }}
+/>
+
+export const Template = (args) => <BlankState {...args} />;
+
+# Blank State
+
+<Source language="jsx" code="import { BlankState } from 'bycoders-ui-react'" />
+
+The `Blank State` must be used to hide some components without data yet.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={BlankState} />
+
+## Shorthand
+
+In most of times we should use this `Shorthand`:
+
+<Preview>
+  <Story
+    name="Shorthand"
+    args={{
+      icon: 'wifi',
+      title: 'Some title for the blank state',
+      description: 'Description with some information',
+      actionText: 'Action text',
+      onActionClick: () => alert('action callback'),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Shorthand" />
+
+## Children Override
+
+We can override what `Blank State` renders passing a `children` to it:
+
+<Preview>
+  <Story name="Override" args={{ children: <div>Hello there</div> }}>
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+## Default Children Render
+
+We can pass `children` to it and build same as `Shorthand` like:
+
+<Preview
+  mdxSource={`
+<BlankState>
+  <BlankState.Title>Title</BlankState.Title>
+  <BlankState.Description>Description</BlankState.Description>
+  <BlankState.Action onClick={() => alert('callback')}>
+    Action
+  </BlankState.Action>
+</BlankState>
+  `}
+>
+  <Story
+    name="Default Children"
+    args={{
+      children: (
+        <>
+          <BlankState.Title>Title</BlankState.Title>
+          <BlankState.Description>Description</BlankState.Description>
+          <BlankState.Action onClick={() => alert('callback')}>
+            Action
+          </BlankState.Action>
+        </>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>

@@ -1,0 +1,101 @@
+{
+  "name": "bycoders-ui-react",
+  "version": "1.2.16",
+  "description": "This is bycoders_ ui library for react",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "bump-patch": "git fetch --all --tags && HUSKY=0 standard-version --release-as patch",
+    "bump-minor": "git fetch --all --tags && HUSKY=0 standard-version --release-as minor",
+    "bump-major": "git fetch --all --tags && HUSKY=0 standard-version --release-as major",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "chromatic": "chromatic --exit-zero-on-changes"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ByCodersTec/ui-kit-react.git"
+  },
+  "keywords": [
+    "react",
+    "bycoders",
+    "ui-kit"
+  ],
+  "author": "bycoders_ <contato@bycoders.com.br> (https://bycoders.com.br)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ByCodersTec/ui-kit-react/issues"
+  },
+  "homepage": "https://github.com/ByCodersTec/ui-kit-react#readme",
+  "dependencies": {
+    "@types/uuid": "^8.3.1",
+    "clsx": "^1",
+    "icomoon-react": "^2.0.19",
+    "immer": "^9.0.6",
+    "lodash": "^4.17.21",
+    "react-dnd": "^14.0.4",
+    "react-dnd-html5-backend": "^14.0.2",
+    "react-use": "^17.2.4",
+    "styled-components": "^5",
+    "ui-kit-react": "link:/Users/alexandre/ui-kit-react",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-docs": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/react": "^6.3.7",
+    "@types/lodash": "^4.14.170",
+    "@types/node": "^15.6.0",
+    "@types/react": "^17.0.6",
+    "@types/react-dom": "^17.0.5",
+    "@types/styled-components": "^5.1.9",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-styled-components": "^1.12.0",
+    "chromatic": "^5.8.3",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-import-helpers": "^1.1.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^6.0.0",
+    "pinst": "^2.1.6",
+    "postcss": "^8.3.0",
+    "prettier": "^2.3.0",
+    "react": "^17.0.2",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "react-dom": "^17.0.2",
+    "standard-version": "^9.3.0",
+    "storybook-addon-react-docgen": "^1.2.42",
+    "trim": "^1.0.1",
+    "typescript": "^4.2.4",
+    "typescript-plugin-styled-components": "^1.5.0"
+  },
+  "peerDependencies": {
+    "react": "^16",
+    "react-dom": "^16"
+  }
+}

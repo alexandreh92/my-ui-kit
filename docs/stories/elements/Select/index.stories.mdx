@@ -1,0 +1,55 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import Select from '../../../../src/elements/Select';
+
+<Meta title="Components/Elements/Select" component={Select} />
+
+export const Template = (args) => <Select {...args} />;
+
+# Select
+
+<Source language="jsx" code="import { Select } from 'bycoders-ui-react'" />
+
+The `Select` component holds is a dropdown selection which holds a collection of options.
+It extends any default `HTMLSelectElement` props.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Select} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    height="180px"
+    name="Default"
+    args={{
+      label: 'Some Label',
+      name: 'checkbox-name',
+      caption: 'Some Caption',
+      error: false,
+      data: [
+        { value: 1, label: 'Option 1' },
+        { value: 2, label: 'Option 2' },
+      ],
+      onOptionClick: (value) => alert(JSON.stringify(value)),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />

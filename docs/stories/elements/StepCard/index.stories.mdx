@@ -1,0 +1,51 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import StepCard from '../../../../src/elements/StepCard';
+
+<Meta title="Components/Elements/StepCard" component={StepCard} />
+
+export const Template = (args) => <StepCard {...args} />;
+
+# StepCard
+
+<Source language="jsx" code="import { StepCard } from 'bycoders-ui-react'" />
+
+The `StepCard` component is a simple card with a `title` `icon` and `text`. You can add a
+`buttonText` and `buttonIcon` too.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={StepCard} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    back
+    name="Default"
+    args={{
+      title: 'Some Title',
+      text: 'Some Text',
+      icon: 'wifi',
+      buttonIcon: 'wifi',
+      buttonText: 'Some Action',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />

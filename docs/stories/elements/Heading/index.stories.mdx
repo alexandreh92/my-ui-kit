@@ -1,0 +1,65 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+
+import Heading from '../../../../src/elements/Heading';
+
+<Meta title="Components/Elements/Heading" component={Heading} />
+
+export const Template = (args) => <Heading {...args} />;
+
+# Heading
+
+<Source language="jsx" code="import { Heading } from 'bycoders-ui-react'" />
+
+The `Heading` component should be used to any subcomponent text elements.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Heading} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      children: 'Some String',
+      weight: 'header-500',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />
+
+## Render As
+
+You can add a property named `renderAs` to change the component wrapper:
+
+<Preview>
+  <Story
+    name="Custom Wrapper"
+    args={{
+      children: 'Some String',
+      weight: 'header-500',
+      renderAs: 'h1',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Custom Wrapper" />

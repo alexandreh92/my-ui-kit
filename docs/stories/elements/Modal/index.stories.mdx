@@ -1,0 +1,144 @@
+<!---Badge.stories.mdx --->
+
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  Props,
+  ArgsTable,
+} from '@storybook/addon-docs';
+import { useState } from 'react';
+
+import Modal from '../../../../src/elements/Modal';
+import Button from '../../../../src/elements/Button';
+
+<Meta
+  title="Components/Elements/Modal"
+  component={Modal}
+  subcomponents={{
+    'Modal.Header': Modal.Header,
+    'Modal.Content': Modal.Content,
+    'Modal.Actions': Modal.Actions,
+  }}
+/>
+
+export const Template = (args) => <Modal {...args} />;
+
+# Modal
+
+<Source language="jsx" code="import { Modal } from 'bycoders-ui-react'" />
+
+The `Modal` component is a wrapper to an element which renders a modal when the trigger
+element is pressed.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Modal} />
+
+## Shorthand
+
+In most of times we should use this `Shorthand`:
+
+<Preview>
+  <Story
+    name="Shorthand"
+    args={{
+      title: 'My Modal',
+      contentMeta: 'Meta',
+      content:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      trigger: <Button>Trigger</Button>,
+      onSuccessLabel: 'Confirm',
+      onCancelLabel: 'Cancel',
+      onOpen: () => console.log('onOpen callback'),
+      onClose: () => console.log('onClose callback'),
+      onSuccessClick: () => alert('success'),
+      onCancelClick: () => alert('canceled'),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Shorthand" />
+
+## Shorthand with custom actions
+
+You can also pass custom actions for the modal:
+
+<Preview>
+  <Story
+    name="Custom Actions"
+    args={{
+      title: 'My Modal',
+      contentMeta: 'Meta',
+      content:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      trigger: <Button>Trigger</Button>,
+      actions: [
+        {
+          label: 'Click-me',
+          variant: 'destructive-secondary',
+          onClick: () => alert('you have clicked me'),
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+## Controlled
+
+You can control whether `Modal` is open or not.
+
+<Preview
+  mdxSource={`
+const [open, setOpen] = useState(false);
+return (
+  <>
+    <Modal
+      isOpen={open}
+      title="My Modal"
+      contentMeta="Meta"
+      content="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      onOpen={() => console.log('onOpen callback')}
+      onClose={() => {
+        console.log('onClose callback');
+        setOpen(false);
+      }}
+      onSuccessClick={() => alert('success')}
+      onCancelClick={() => alert('canceled')}
+    />
+    <Button onClick={() => setOpen(true)}>Open Modal</Button>
+  </>
+);
+`}
+>
+  <Story name="Controlled">
+    {() => {
+      const [open, setOpen] = useState(false);
+      return (
+        <>
+          <Modal
+            isOpen={open}
+            title="My Modal"
+            contentMeta="Meta"
+            content="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            onOpen={() => console.log('onOpen callback')}
+            onClose={() => {
+              console.log('onClose callback');
+              setOpen(false);
+            }}
+            onSuccessClick={() => alert('success')}
+            onCancelClick={() => alert('canceled')}
+          />
+          <Button onClick={() => setOpen(true)}>Open Modal</Button>
+        </>
+      );
+    }}
+  </Story>
+</Preview>

@@ -1,0 +1,39 @@
+<!---Badge.stories.mdx --->
+
+import { Meta, Story, Preview, Source, ArgsTable } from '@storybook/addon-docs';
+
+import Spinner from '../../../../src/elements/Spinner';
+import Dimmer from '../../../../src/elements/Dimmer';
+
+<Meta title="Components/Elements/Spinner" component={Spinner} />
+
+export const Template = (args) => <Spinner {...args} />;
+
+# Spinner
+
+<Source language="jsx" code="import { Spinner } from 'bycoders-ui-react'" />
+
+Just a `Spinner`.
+
+<br></br>
+
+## Properties
+
+<ArgsTable of={Spinner} />
+
+## Default
+
+In most of cases you should use it in this way:
+
+<Preview>
+  <Story
+    name="Default"
+    args={{
+      size: 'medium',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Default" />
