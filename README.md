@@ -1,10 +1,5 @@
-This is bycoders_ oficial React Ui-Kit library.
 
 # Usage
-
-```bash
-yarn add bycoders-ui-react
-```
 
 You'll need to wrap your application with a context to use this library:
 
@@ -12,7 +7,7 @@ You'll need to wrap your application with a context to use this library:
   ```js
   // src/index.js
 
-  import { ThemeProvider, defaultTheme, ResetCSS } from 'bycoders-ui-react'
+  import { ThemeProvider, defaultTheme, ResetCSS } from 'my-ui'
 
   function MyApp() {
     return(
@@ -32,7 +27,7 @@ You'll need to wrap your application with a context to use this library:
   ```js
   // src/pages/_app.js
 
-  import { ThemeProvider, defaultTheme } from 'bycoders-ui-react'
+  import { ThemeProvider, defaultTheme } from 'my-ui'
 
   function MyApp({ Component, pageProps }) {
     return(
@@ -63,7 +58,7 @@ then you can use components like this:
 // src/pages/foo.tsx
 
 import React from 'react';
-import { Input } from 'bycoders-ui-react';
+import { Input } from 'my-ui';
 
 export default function Foo() {
   return (
@@ -79,7 +74,7 @@ You can customize theme colors and add properties:
 - Adding new colors/properties:
 
   ```js
-  import { defaultTheme } from 'bycoders-ui-react';
+  import { defaultTheme } from 'my-ui';
 
   const newTheme = {
     ...defaultTheme,
@@ -90,10 +85,10 @@ You can customize theme colors and add properties:
 
 - Customizing existing props:
 
-  You can use [BycodersTheme](src/globals/defaultTheme.ts) interface to view all properties of the theme.
+  You can use [DefaultTheme](src/globals/defaultTheme.ts) interface to view all properties of the theme.
 
   ```js
-  import { defaultTheme } from 'bycoders-ui-react';
+  import { defaultTheme } from 'my-ui';
 
   const newTheme = {
     ...defaultTheme,
@@ -109,7 +104,7 @@ You can customize theme colors and add properties:
     ```ts
     // src/@types/styled-components.d.ts
 
-    import { BycodersTheme } from 'bycoders-ui-react';
+    import { BycodersTheme } from 'my-ui';
 
     declare module 'styled-components' {
       export interface DefaultTheme extends BycodersTheme {}
@@ -121,7 +116,7 @@ You can customize theme colors and add properties:
     ```js
     // src/styles/newTheme.ts
 
-    import { defaultTheme } from 'bycoders-ui-react';
+    import { defaultTheme } from 'my-ui';
 
     const newTheme = {
       ...defaultTheme,
@@ -145,7 +140,6 @@ You can customize theme colors and add properties:
 This project is documented on Storybook. You'll need to clone the project and execute storybook:
 
 ```bash
-git clone git@github.com:ByCodersTec/ui-kit-react.git
 yarn install
 yarn storybook
 ```
